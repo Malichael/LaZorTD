@@ -11,8 +11,11 @@ public class TowerOne extends Tower
 	
 	public void display()
 	{
-		pane.drawPolygon( new int[]{ 0+xPos, 40+xPos, 20+xPos },
+		
+		pane.fillPolygon( new int[]{ 0+xPos, 40+xPos, 20+xPos },
 						  new int[]{ 40+yPos, 40+yPos, 0+yPos }, 3 );
+		pane.drawPolygon( new int[]{ 0+xPos, 40+xPos, 20+xPos },
+				  new int[]{ 40+yPos, 40+yPos, 0+yPos }, 3 );
 	}
 	
 	
