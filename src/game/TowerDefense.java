@@ -1,8 +1,10 @@
 package game;
 
+import java.awt.Graphics;
 import java.util.ArrayList;
 
 import swing.SwingTools;
+import towers.*;
 
 public class TowerDefense extends SwingTools
 {
@@ -88,14 +90,17 @@ public class TowerDefense extends SwingTools
 	
 	
 	Blob b;
+	Tower t;
 	
 	public void displayBlobs()
 	{
 		
 		int xStartBlock = getStart( map )[0];
 		int yStartBlock = getStart( map )[1];
-		if (b == null) b = new Blob( xStartBlock * 40 + 20, yStartBlock * 40 + 20, map );
+		if ( b == null ) b = new Blob( xStartBlock * 40 + 20, yStartBlock * 40 + 20, map );
 		b.manage();
+		if ( t == null ) t = new TowerOne( 3, 3 );
+		t.display();
 		
 	}
 	
