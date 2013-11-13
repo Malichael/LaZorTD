@@ -33,6 +33,7 @@ public abstract class SwingTools extends JFrame
 	public static double    mouseX;
 	public static double    mouseY;
 	public static int       rectMode = 0;
+	public static int       polyMode = 0;
 	public static Color     strokeColor = new Color( 0, 0, 0 );
 	public static double    strokeWeight = 1;
 	public static boolean   stroking = true;
@@ -429,6 +430,48 @@ public abstract class SwingTools extends JFrame
 	//	END RECT MODE	//
 	
 	
+	// POLY //
+	public static void poly( double[] x, double[] y, double s)
+	{
+		if ( filling )
+		{
+			pane.setColor( fillColor );
+			if ( polyMode == 0 )
+				pane.fillPolygon( (int[]) x, (int[]) y, (int) s );
+			/* else if ( polyMode == 1 )
+				pane.fillPolygon( (int) ( x - w / 2 ), (int) ( y - h / 2 ), (int) w, (int) h );
+				*/
+		}
+		if ( stroking )
+		{
+			Graphics2D g2d = (Graphics2D) pane;
+			g2d.setStroke( new BasicStroke( (float) strokeWeight ) );
+			pane.setColor( strokeColor );
+			if ( polyMode == 0 )
+				pane.drawPolygon( (int[]) x, (int) y, (int) s );
+			else if ( polyMode == 1 )
+				pane.drawPolygon( (int) ( x - w / 2 ), (int) ( y - h / 2 ), (int) w, (int) h );	
+		}
+	}
+	// END POLY //
+	
+	
+//	POLY MODE	//
+	public static void polyMode( int m )
+	{
+		if ( m == 0 )
+			polyMode = 0;
+		else if ( m == 1 )
+			polyMode = 1;
+	}
+	public static void rectMode( String m )
+	{
+		if ( m.equals("CORNER") || m.equals("corner") )
+			polyMode = 0;
+		else if ( m.equals("CENTER") || m.equals("center") )
+			polyMode = 1;
+	}
+	//	END POLY MODE	//
 	
 	//	SMOOTH	//
 	public static void smooth()
