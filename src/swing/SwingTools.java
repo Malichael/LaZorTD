@@ -431,13 +431,13 @@ public abstract class SwingTools extends JFrame
 	
 	
 	// POLY //
-	public static void poly( double[] x, double[] y, double s)
+	public static void poly( int[] x, int[] y, int s)
 	{
 		if ( filling )
 		{
 			pane.setColor( fillColor );
 			if ( polyMode == 0 )
-				pane.fillPolygon( (int[]) x, (int[]) y, (int) s );
+				pane.fillPolygon( x, y, s );
 			/* else if ( polyMode == 1 )
 				pane.fillPolygon( (int) ( x - w / 2 ), (int) ( y - h / 2 ), (int) w, (int) h );
 				*/
@@ -448,9 +448,11 @@ public abstract class SwingTools extends JFrame
 			g2d.setStroke( new BasicStroke( (float) strokeWeight ) );
 			pane.setColor( strokeColor );
 			if ( polyMode == 0 )
-				pane.drawPolygon( (int[]) x, (int) y, (int) s );
-			else if ( polyMode == 1 )
+				pane.drawPolygon( (int[]) x, (int[]) y, (int) s );
+			/*
+				else if ( polyMode == 1 )
 				pane.drawPolygon( (int) ( x - w / 2 ), (int) ( y - h / 2 ), (int) w, (int) h );	
+				*/
 		}
 	}
 	// END POLY //
@@ -464,7 +466,7 @@ public abstract class SwingTools extends JFrame
 		else if ( m == 1 )
 			polyMode = 1;
 	}
-	public static void rectMode( String m )
+	public static void polyMode( String m )
 	{
 		if ( m.equals("CORNER") || m.equals("corner") )
 			polyMode = 0;
