@@ -429,15 +429,30 @@ public abstract class SwingTools extends JFrame
 	}
 	//	END RECT MODE	//
 	
+	static int[] toIntArray(double[] arr) {
+		  if (arr == null) return null;
+		  int n = arr.length;
+		  int[] ret = new int[n];
+		  for (int i = 0; i < n; i++) {
+		    ret[i] = (int)arr[i];
+		  }
+		  return ret;
+		}
 	
 	// POLY //
-	public static void poly( int[] x, int[] y, int s)
+	public static void poly( double[] x, double[] y, double s)
 	{
+	
+		int[] intx = toIntArray(x);
+		int[] inty = toIntArray(y);
 		if ( filling )
 		{
+			
 			pane.setColor( fillColor );
 			if ( polyMode == 0 )
-				pane.fillPolygon( x, y, s );
+				
+					pane.fillPolygon( intx, inty, (int)s );
+				
 			/* else if ( polyMode == 1 )
 				pane.fillPolygon( (int) ( x - w / 2 ), (int) ( y - h / 2 ), (int) w, (int) h );
 				*/
@@ -448,7 +463,8 @@ public abstract class SwingTools extends JFrame
 			g2d.setStroke( new BasicStroke( (float) strokeWeight ) );
 			pane.setColor( strokeColor );
 			if ( polyMode == 0 )
-				pane.drawPolygon( (int[]) x, (int[]) y, (int) s );
+					pane.drawPolygon( intx, inty, (int) s );
+							
 			/*
 				else if ( polyMode == 1 )
 				pane.drawPolygon( (int) ( x - w / 2 ), (int) ( y - h / 2 ), (int) w, (int) h );	

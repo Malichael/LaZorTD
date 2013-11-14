@@ -12,8 +12,8 @@ public class TowerOne extends Tower
 	public void display()
 	{
 		fill(123, 72, 156);	
-		poly(new int[]{ 0+xPos, 40+xPos, 20+xPos },
-				new int[]{ 40+yPos, 40+yPos, 0+yPos }, 3 );
+		poly(new double[]{ 0+xPos, 40+xPos, 20+xPos },
+				new double[]{ 40+yPos, 40+yPos, 0+yPos }, 3 );
 	}
 	
 	
