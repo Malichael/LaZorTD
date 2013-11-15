@@ -1,7 +1,6 @@
 package swing;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.Serializable;
 
 import javax.swing.*;
 
@@ -47,9 +46,9 @@ public abstract class SwingTools extends JFrame
 	{
 		width = 500;
 		height = 500;
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation( EXIT_ON_CLOSE );
 		Timer t = new Timer( 30,
-				  new ActionListener(){ public void actionPerformed(ActionEvent e){drawPanel();} } );
+				  new ActionListener() { public void actionPerformed(ActionEvent e){drawPanel();} } );
 		t.start();
 	}
 	public void start( int sp )

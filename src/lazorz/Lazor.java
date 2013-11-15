@@ -12,8 +12,7 @@ public abstract class Lazor extends TowerDefense
 		xPos = x; 
 		yPos = y; 
 		theMap = m;
-		
-		}
+	}
 	
 	public abstract void manage();
 

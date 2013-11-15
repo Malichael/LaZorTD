@@ -33,7 +33,7 @@ public class TowerDefense extends SwingTools
 				{ 00, 00, 00, 14, 14, 12, 00, 00, 00, 00 },
 				{ 00, 00, 00, 00, 00, 32, 00, 00, 00, 00 }
 			};
-	ArrayList<Lazor> lazorz = new ArrayList<>();
+	ArrayList<Lazor> lazorz = new ArrayList<Lazor>();
 	
 	public void draw()
 	{
@@ -100,47 +100,34 @@ public class TowerDefense extends SwingTools
 		
 		int xStartBlock = getStart( map )[0];
 		int yStartBlock = getStart( map )[1];
-		if ( l == null ) 
-			l = new LazorOne( xStartBlock * 40 + 20, yStartBlock * 40 + 20, map );
+		if ( l == null )	l = new LazorOne( xStartBlock * 40 + 20, yStartBlock * 40 + 20, map );
 		l.manage();
-		l.display();
 		if ( t == null ) t = new TowerOne( 3, 3 );
 		t.display();
 		
 	}
 	
-		
-	static int[] toIntArray(double[] arr) {
-		  if (arr == null) return null;
-		  int n = arr.length;
-		  int[] ret = new int[n];
-		  for (int i = 0; i < n; i++) {
-		    ret[i] = (int)arr[i];
-		  }
-		  return ret;
-		}
-	// POLY //
-	public static void poly( double[] x, double[] y, double s)
+	public static void poly( double[] x, double[] y, double s )
 	{
 	
-		int[] intx = toIntArray(x); //rewrite this
-		int[] inty = toIntArray(y); //rewrite this
+		int[] intx = new int[x.length];
+		for ( int i = 0; i < x.length; i++ )	intx[i] = (int) x[i];
+		int[] inty = new int[y.length];
+		for ( int i = 0; i < y.length; i++ )	inty[i] = (int) y[i];
 		if ( filling )
 		{	
 			pane.setColor( fillColor );
-					pane.fillPolygon( intx, inty, (int)s );
+			pane.fillPolygon( intx, inty, (int)s );
 		}
 		if ( stroking )
 		{
 			Graphics2D g2d = (Graphics2D) pane;
 			g2d.setStroke( new BasicStroke( (float) strokeWeight ) );
 			pane.setColor( strokeColor );
-					pane.drawPolygon( intx, inty, (int) s );
+			pane.drawPolygon( intx, inty, (int) s );
 		}
 	}
-	// END POLY //
-	
-	//	HELLO WORLD //
+
 	public static void main( String[] args )
 	{
 		new TowerDefense().start( 400, 400 );
